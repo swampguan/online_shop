@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guanze.mapper.UserMapper">
+    <resultMap id="usermap" type="com.guanze.pojo.user">
+        <result column="id" property="user_id"/>
+        <result column="username" property="user_name"/>
+    </resultMap>
+    <select id="selectByCondition" resultMap="usermap">
+        select * from lib_user
+         where username = #{username} and password = #{password};
+    </select>
+    <insert id="add" useGeneratedKeys="true" keyProperty="user_id">
+        insert into lib_user (username,password,email) values (#{user_name},#{password},#{email});
+    </insert>
+    <select id="selectById"  resultMap="usermap">
+        select * from lib_user where user_id=#{user_id}
+    </select>
+    <select id="selectAll" resultMap="usermap">
+        select * from lib_user
+    </select>
+
+</mapper>

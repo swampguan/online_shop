@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+     text-decoration: none;
+     color:black;
+ }
+a:hover {
+
+    color: #00a4ff
+}
+
+.motif {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}

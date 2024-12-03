@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.motif {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.login{
+   text-align: center;
+    margin: 0 auto;
+
+}
+tr{
+    text-align: left;
+
+}
+a {
+    text-decoration: none;
+    color:#00a4ff;
+}
+a:hover {
+
+    color: #ff7c2d
+}

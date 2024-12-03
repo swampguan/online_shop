@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guanze.mapper.OrderMapper">
+    <resultMap id="ordermap" type="com.guanze.pojo.order">
+        <result column="id" property="order_id"/>
+        <result column="update_at" property="updated_at"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="ordermap">
+        select * from lib_order;
+    </select>
+
+    <select id="selectById"  resultMap="ordermap">
+        select * from lib_order where id=#{id};
+    </select>
+
+    <insert id="add">
+        insert into lib_order(user_id,goods_id,price,quantity,goods_name,status)
+        values(#{usersid},#{goodsid},#{price},#{quantity},#{goodsname},0);
+    </insert>
+
+    <select id="selectByCondition" resultMap="ordermap">
+        select * from lib_order
+        <where>
+            <if test="user_id!= null">
+                and user_id = #{user_id}
+            </if>
+
+                and status=0
+
+        </where>
+    </select>
+
+    <select id="selectByUGNP" resultMap="ordermap">
+        select * from lib_order where user_id=#{user_id} and goods_id=#{goods_id} and goods_name=#{goods_name} and price=#{price} and status=0;
+    </select>
+
+    <update id="updateUG" >
+        update lib_order
+        <set>
+            <if test="quantity!= null">
+                quantity=#{quantity}
+            </if>
+
+        </set>
+        where user_id=#{user_id} and goods_id=#{goods_id} and status=0;
+    </update>
+
+   <update id="update">
+        update lib_order
+       <set>
+           <if test="quantity!= null and quantity!=0">
+               quantity=#{quantity}
+           </if>
+       </set>
+       where id=#{id} and status=0;
+   </update>
+
+    <delete id="del">
+        delete from lib_order
+        <where>
+            id =#{order_id}
+        </where>
+    </delete>
+
+    <update id="purchase" >
+        update lib_order
+        set status=1
+        where id=#{order_id};
+
+    </update>
+
+   <select id="show_history" resultMap="ordermap">
+       select * from lib_order where status=1;
+    </select>
+
+    <select id="show_user_history" resultMap="ordermap">
+        select * from lib_order where status=1 and user_id=#{user_id};
+    </select>
+
+   <select id="show_goods_history" resultMap="ordermap">
+       select goods_id,price,goods_name,sum(quantity) as quantity
+       from lib_order
+       where status=1 group by goods_id,goods_name,price;
+    </select>
+
+    <update id="del_none_goods" >
+            update lib_order
+        set status=2
+        where goods_id=#{goods_id} and status=0;
+    </update>
+
+</mapper>
