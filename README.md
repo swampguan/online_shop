@@ -11,35 +11,35 @@
 
 src/main
 
-​    ###|------>java/com/guanze
+​    |------>java/com/guanze
 
-​        ####|------->mapper    存放数据库映射文件
+​       ...|------->mapper    存放数据库映射文件
 
-​        ####|------->pojo         存放数据库表对应的java类
+​       ...|------->pojo         存放数据库表对应的java类
 
-​        ####|------->service     存放service方法
+​       ...|------->service     存放service方法
 
-​        ####|------->servlet      存放servlet方法
+​       ...|------->servlet      存放servlet方法
 
-​       #### |------->utils          抽象工具类，供service方法调用访问数据库
-
-
-
-
-
-​    ###|------->resources
-
-​        ####|------->mapper    存放mapper中同名的xml文件
-
-​       #### |------->mybatis-config.xml   存放mybatis配置
+​       ...|------->utils          抽象工具类，供service方法调用访问数据库
 
 
 
 
 
+​   |------->resources
 
-​    ###|------->webapps
+​        ...|------->mapper    存放mapper中同名的xml文件
 
-​        ####|------->imgs    图片文件
+​       ...|------->mybatis-config.xml   存放mybatis配置
 
-​        ####|-------> .jsp    jsp页面
+
+
+
+
+
+​    |------->webapps
+
+​        ...|------->imgs    图片文件
+
+​        ...|-------> .jsp    jsp页面
